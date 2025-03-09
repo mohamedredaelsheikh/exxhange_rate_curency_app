@@ -1,16 +1,22 @@
 class Quotes {
-  Map<String, dynamic>? dates;
+  Map<String, Map<String, double>>? dates;
 
   Quotes({this.dates});
 
-  // From JSON to Quotes object
   factory Quotes.fromJson(Map<String, dynamic> json) {
     return Quotes(
-      dates: json, // Store the map directly as it is
+      dates: json.map(
+        (date, rates) => MapEntry(
+          date,
+          (rates as Map<String, dynamic>).map(
+            (currencyPair, rate) =>
+                MapEntry(currencyPair, (rate as num).toDouble()),
+          ),
+        ),
+      ),
     );
   }
 
-  // From Quotes object to JSON
   Map<String, dynamic> toJson() {
     return dates ?? {};
   }

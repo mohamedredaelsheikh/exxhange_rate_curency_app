@@ -1,4 +1,5 @@
-import 'quotes.dart';
+import 'package:exchange_rate_currency_app/features/exchange_rate/data/models/exchange_rate_model/quotes.dart';
+import 'package:exchange_rate_currency_app/features/exchange_rate/domain/entities/exchange_rate_entity.dart';
 
 class ExchangeRateModel {
   bool? success;
@@ -47,4 +48,8 @@ class ExchangeRateModel {
     'source': source,
     'quotes': quotes?.toJson(),
   };
+
+  ExchangeRate toEntity() {
+    return ExchangeRate(dates: quotes?.dates ?? {});
+  }
 }
