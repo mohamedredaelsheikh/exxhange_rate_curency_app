@@ -1,5 +1,5 @@
 class ExchangeRate {
-  final Map<String, dynamic> dates;
+  final Map<String, Map<String, double>> dates;
 
   ExchangeRate({required this.dates});
 }
