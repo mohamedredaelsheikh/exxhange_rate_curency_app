@@ -9,7 +9,7 @@ class ExchangeRateView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Exchange Rate Currency'),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.teal,
       ),
       body: ExchangeRateViewBody(),
     );
