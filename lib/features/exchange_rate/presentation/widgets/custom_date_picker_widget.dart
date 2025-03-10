@@ -15,6 +15,24 @@ class DatePickerWidget extends StatelessWidget {
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime.now(),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: Colors.teal,
+
+              onPrimary: Colors.white,
+
+              onSurface: Colors.black87,
+            ),
+
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(foregroundColor: Colors.teal),
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
     if (picked != null) {
       cubit.updateDates(
@@ -32,12 +50,16 @@ class DatePickerWidget extends StatelessWidget {
             state is InputsUpdated
                 ? (isStartDate ? state.startDate : state.endDate)
                 : null;
-        return ElevatedButton(
+        return ElevatedButton.icon(
           onPressed: () => _selectDate(context),
-          child: Text(
+          icon: const Icon(Icons.calendar_today, size: 20),
+          label: Text(
             date != null
                 ? date.toString().split(' ')[0]
                 : (isStartDate ? 'Start Date' : 'End Date'),
+          ),
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
           ),
         );
       },

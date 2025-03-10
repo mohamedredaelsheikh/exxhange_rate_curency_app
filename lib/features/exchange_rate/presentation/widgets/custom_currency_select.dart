@@ -18,10 +18,16 @@ class CurrencySelectorWidget extends StatelessWidget {
             state is InputsUpdated
                 ? (isFromCurrency ? state.fromCurrency : state.toCurrency)
                 : null;
-        return DropdownButton<String>(
+        return DropdownButtonFormField<String>(
           value: currency,
-          hint: Text(isFromCurrency ? 'From Currency' : 'To Currency'),
-          isExpanded: true,
+          decoration: InputDecoration(
+            labelText: isFromCurrency ? 'From Currency' : 'To Currency',
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 8,
+            ),
+          ),
           items:
               ApiConstants.supportedCurrencies.map((String value) {
                 return DropdownMenuItem<String>(

@@ -32,7 +32,34 @@ class ExchangeRateCurrencyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Exchange Rate Currency App',
-        theme: ThemeData(primarySwatch: Colors.blue),
+        theme: ThemeData(
+          primarySwatch: Colors.teal,
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.teal,
+            accentColor: Colors.orange,
+          ),
+
+          scaffoldBackgroundColor: Colors.grey.shade100,
+          cardTheme: CardTheme(
+            elevation: 4,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              textStyle: const TextStyle(fontSize: 16),
+            ),
+          ),
+          textTheme: const TextTheme(
+            bodyMedium: TextStyle(color: Colors.black87),
+          ),
+        ),
         home: ExchangeRateView(),
       ),
     );
